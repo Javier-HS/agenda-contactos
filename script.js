@@ -3,11 +3,22 @@ let contactos = [];
 
 const formContacto = document.getElementById("formContacto");
 const mensaje = document.getElementById("mensaje");
+const listaContactos = document.getElementById("listaContactos");
 
 // Muestra un mensaje de validación o confirmación
 function mostrarMensaje(texto, color) {
   mensaje.innerText = texto;
   mensaje.style.color = color;
+}
+
+// Dibuja la lista de contactos en pantalla
+function mostrarContactos() {
+  listaContactos.innerHTML = "";
+  contactos.forEach((c) => {
+    const li = document.createElement("li");
+    li.innerText = c.nombre + " - " + c.telefono + " - " + c.correo;
+    listaContactos.appendChild(li);
+  });
 }
 
 // Agrega un nuevo contacto validando los datos
@@ -24,4 +35,5 @@ formContacto.addEventListener("submit", (e) => {
   contactos.push({ nombre, telefono, correo });
   formContacto.reset();
   mostrarMensaje("Contacto agregado correctamente.", "#27ae60");
+  mostrarContactos();
 });
