@@ -32,3 +32,20 @@ button {
   text-align: center;
   font-weight: bold;
 }
+ul {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0;
+  list-style: none;
+}
+li {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+li button {
+  background-color: #e74c3c;
+  margin-left: 10px;
+}
