@@ -11,12 +11,25 @@ function mostrarMensaje(texto, color) {
   mensaje.style.color = color;
 }
 
+// Elimina un contacto según su posición en el arreglo
+function eliminarContacto(indice) {
+  contactos.splice(indice, 1);
+  mostrarContactos();
+  mostrarMensaje("Contacto eliminado.", "#e67e22");
+}
+
 // Dibuja la lista de contactos en pantalla
 function mostrarContactos() {
   listaContactos.innerHTML = "";
-  contactos.forEach((c) => {
+  contactos.forEach((c, indice) => {
     const li = document.createElement("li");
-    li.innerText = c.nombre + " - " + c.telefono + " - " + c.correo;
+    li.innerText = c.nombre + " - " + c.telefono + " - " + c.correo + " ";
+
+    const btnEliminar = document.createElement("button");
+    btnEliminar.innerText = "Eliminar";
+    btnEliminar.addEventListener("click", () => eliminarContacto(indice));
+
+    li.appendChild(btnEliminar);
     listaContactos.appendChild(li);
   });
 }
